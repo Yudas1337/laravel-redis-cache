@@ -1,0 +1,19 @@
+services:
+    coba-redis:
+        build:
+            context: './vendor/laravel/sail/runtimes/8.3'
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        image: 'sail-8.3/app'
+        ports:
+            - '8000:80'
+        environment:
+            WWWUSER: '${WWWUSER}'
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - database-network
+networks:
+    database-network:
+        external: true
