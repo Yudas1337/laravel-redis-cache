@@ -16,8 +16,6 @@ Route::get('/cached', function () {
 
 Route::get('/', function () {
     Benchmark::dd([
-        'categories-all' => fn() => Category::all(),
-        'products-all' => fn() => Product::all(),
         'categories-get' => fn() => Category::query()->get(),
         'products-get' => fn() => Product::query()->get(),
         'cached-categories' => fn() => Cache::get('categories:all'),
